@@ -34,12 +34,20 @@ RSpec.describe Processor do
       @p.updated.should == ["display: none", "foo: bar", "//can't touch this"]
     end
 
-    describe "test case" do 
+    describe "test cases" do 
       it 'should convert the test case into expected values' do 
         p = Processor.new(test_case.map{|d| d[0]})
         p.update_sass
         p.updated.should == test_case.map{|d| d[1]}
       end
+
+      it 'should preserve lines in cases of sub clauses' do 
+        data = ["  p\n", "    :margin\n", "      :top 1em\n", "      :bottom 2em\n", "\n"]
+        p = Processor.new(data)
+        p.update_sass
+        p.updated.should == ["  p\n", "    margin:\n", "      top: 1em\n", "      bottom: 2em\n", "\n"]
+      end
+
     end
 
 
