@@ -1,28 +1,28 @@
 # SassUpdater
 
-Working on an older code base with SASS files that use the old-style properties? 
-Keep seeing messages like this when you compile your assets:
+Command line tool to update old-style sass syntax to current convention, ie:
+
+`:font-size 1em` becomes `font-size: 1em`
+    
+Working on an older code base with SASS files that use the old-style properties?   
+Keep seeing messages like this when you compile your assets?
 
     Old-style properties like ":right 1em" are deprecated and will be an error in future versions of Sass.
     
-The whop this gem all up in your rails app and `run update_sass` and it will process your sass and update all those annoying old style properties.
+The whop this gem all up in your rails app and run `update_sass` and it will process your stylesheets and update all those annoying old style properties.
 
-Changes old-style sass lines, ie:
-
-    :font-size 1em into font-size: 1em
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sass_updater', :github => "Sujimichi/sass_updater"
+gem 'sass_updater', :github => "Sujimichi/sass_updater", :require => false
 ```
 
 And then execute:
 
     $ bundle install
-
 
 
 ## Usage
