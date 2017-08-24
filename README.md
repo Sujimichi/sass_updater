@@ -53,7 +53,7 @@ Got an improvment? fork, fix, rake spec, and send a pull request.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sass_updater.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Sujimichi/sass_updater
 
 ## License
 
