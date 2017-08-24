@@ -48,6 +48,10 @@ RSpec.describe Processor do
         p.updated.should == ["  p\n", "    margin:\n", "      top: 1em\n", "      bottom: 2em\n", "\n"]
       end
 
+      it 'should not add a new line' do 
+        @p.update_line("    :repeat no-repeat\n").should == "    repeat: no-repeat\n"
+      end
+
     end
 
 
