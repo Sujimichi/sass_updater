@@ -33,7 +33,7 @@ From the command line anywhere in your rails app run
     
 This will look for all your .sass and .css.sass files. It will first create a backup (.backup) in the same location as the original file and will then update the original file.
 
-###Options
+### Options
 
     $ update_sass --display     #just display the changes without altering the original file or making backups
     $ update_sass --no-backup   #skip writing a backup of the original
