@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'sass_updater'
+
+
+puts SassUpdater.test
