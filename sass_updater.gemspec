@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["sujimichi@gmail.com"]
 
   spec.summary       = "convert old style sass files into current format"
-  spec.description   = "convert old style sass files into current format"
-  #spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.description   = "processes stylesheets to convert old stlye syntax ie: ':display none' to current convention ie: 'display: none'"
+  spec.homepage      = "https://github.com/Sujimichi/sass_updater"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
