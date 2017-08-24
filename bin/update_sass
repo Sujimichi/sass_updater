@@ -1,6 +1,3 @@
 #!/usr/bin/env ruby
-
-require 'sass_updater'
-
-
-puts SassUpdater.test
+require 'sass_updater/cli'
+SassUpdater::CLI.start

@@ -1,9 +1,5 @@
 #require "sass_updater/version"
 
 module SassUpdater
-  # Your code goes here...
-
-  def self.test
-    puts "foo"
-  end
+  # Your code goes here...or not, main cody stuff in lib/
 end
