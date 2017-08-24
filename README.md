@@ -9,7 +9,7 @@ Keep seeing messages like this when you compile your assets?
 
     Old-style properties like ":right 1em" are deprecated and will be an error in future versions of Sass.
     
-The whop this gem all up in your rails app and run `update_sass` and it will process your stylesheets and update all those annoying old style properties.
+Then whop this gem all up in your rails app and run `update_sass` and it will process your stylesheets and update all those annoying old style properties.
 
 
 ## Installation
@@ -33,10 +33,12 @@ From the command line anywhere in your rails app run
     
 This will look for all your .sass and .css.sass files. It will first create a backup (.backup) in the same location as the original file and will then update the original file.
 
-    $ update_sass --display     #just output the changes it would make without altering the original file or making backups.
+###Options
+
+    $ update_sass --display     #just display the changes without altering the original file or making backups
     $ update_sass --no-backup   #skip writing a backup of the original
     
-If your styleheets have different extensions to either .sass or .css.sass then you can specifiy the extension to look for like this
+If your styleheets have different extensions to either .sass or .css.sass then you can specifiy extensions
 
     $ update_sass --extensions .scss .sass
     
