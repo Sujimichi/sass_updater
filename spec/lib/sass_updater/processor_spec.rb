@@ -41,11 +41,16 @@ RSpec.describe Processor do
         p.updated.should == test_case.map{|d| d[1]}
       end
 
-      it 'should preserve lines in cases of sub clauses' do 
-        data = ["  p\n", "    :margin\n", "      :top 1em\n", "      :bottom 2em\n", "\n"]
-        p = Processor.new(data)
+      it 'should preserve new lines with sub clauses' do 
+        p = Processor.new(["  p\n", "    :margin\n", "      :top 1em\n", "      :bottom 2em\n", "\n"])
         p.update_sass
         p.updated.should == ["  p\n", "    margin:\n", "      top: 1em\n", "      bottom: 2em\n", "\n"]
+      end
+
+      it 'should preserve new lines with sub clauses when there are trailing whitespaces' do 
+        p = Processor.new([":margin \n", "  :bottom 6px\n", "  :left 10%\n"] )
+        p.update_sass
+        p.updated.should == ["margin:\n", "  bottom: 6px\n", "  left: 10%\n"] 
       end
 
       it 'should not add a new line' do 
