@@ -17,7 +17,7 @@ Then whop this gem all up in your rails app and run `update_sass` and it will pr
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sass_updater', :github => "Sujimichi/sass_updater", :require => false
+gem 'sass_updater', :git => "https://github.com/Sujimichi/sass_updater.git", :require => false
 ```
 
 And then execute:
