@@ -82,5 +82,22 @@ RSpec.describe Processor do
 
   end
 
+  describe "needs_updating?" do 
+    before :each do 
+      @p = Processor.new      
+    end
+
+    it 'should return true if there are lines which have : as the first char' do 
+      @p.data = test_case.map{|d| d[0]}
+      @p.should be_needs_updating      
+    end
+
+    it 'should return false if there are no lines which have : as the first char' do 
+      @p.data = test_case.map{|d| d[1]}
+      @p.should_not be_needs_updating
+    end
+
+  end
+
 end 
 

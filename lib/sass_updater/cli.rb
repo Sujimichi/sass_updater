@@ -5,8 +5,8 @@ require 'sass_updater'
 module SassUpdater
   class CLI < Thor
     default_task :file
-    
-       
+
+
     desc "info", "show basic overview"
     def info
       puts "SASS UPDATER"
@@ -20,7 +20,7 @@ module SassUpdater
     method_option :backup,     :type => :boolean, :default => true,  :desc => "Create a backup of the original sass file"
     method_option :extensions, :type => :array,   :default => ['sass', 'css.sass'], :desc => "extensions to look for"
     def file *files
-      
+
       opts = options || {}
       opts = opts.dup
       opts[:backup] = false if opts[:display]
@@ -31,36 +31,37 @@ module SassUpdater
         f = "{#{extensions.join(",")}}"
         files = Dir.glob("**/*.#{f}")
       end
-     
-      files.each do |file|
-        puts "Working on #{file}:"
-        file_data = File.open(file, "r"){|f| f.readlines}
 
-        if opts[:backup]
-          File.open("#{file}.backup", "w"){|f| f.write file_data.join}
-          puts "backup written to #{file}.backup"         
-        end
+      files.each do |file|
+        puts "\nWorking on #{file}:"
+        file_data = File.open(file, "r"){|f| f.readlines}
 
         puts "file has #{file_data.size} lines"
         processor = Processor.new(file_data)
-        processor.update_sass do |count, line, new_line|
-          print "changes: #{count}"
-          print "\r"
-          sleep 0.01
-        end
-        puts "\n"
 
-        if opts[:display]
-          puts processor.updated
+        if processor.needs_updating?
+
+          if opts[:backup]
+            File.open("#{file}.backup", "w"){|f| f.write file_data.join}
+            puts "backup written to #{file}.backup"         
+          end
+
+          processor.update_sass{|count, line, new_line| print "changes: #{count}"; print "\r"; sleep 0.01}
+          puts "\n"
+
+          if opts[:display]
+            puts processor.updated
+          else
+            print "saving #{file}..."
+            File.open(file,'w'){|f| f.write processor.updated.join}
+          end
+
+          puts "done"               
         else
-          print "saving #{file}..."
-          File.open(file,'w'){|f| f.write processor.updated.join}
+          puts "no changes needed to file"
         end
-
-        puts "done"               
       end
-      
-      
+
     end
 
   end

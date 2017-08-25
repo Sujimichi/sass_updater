@@ -24,5 +24,9 @@ class Processor
     @count+=1 if @count
     new_line
   end
+
+  def needs_updating?
+    not @data.select{|line| line.lstrip.match(/^:/) }.empty?
+  end
     
 end 
